@@ -35,7 +35,7 @@ def inputControl(guess):
             return 0
            
         elif(len(guess) != 5):
-            return 0
+            raise SystemExit(0)
     return 1    
     
 
