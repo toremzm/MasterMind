@@ -9,12 +9,11 @@ init(autoreset=True)
 
         
 #is called upon running the programm
-def start():
-    
-    setMaster(generate_word(5))
+def start(x):
+    if(x == "1"):
+        setMaster(generate_word(getMasterLength()))
 
-    global master
-    master = getMaster()
+
      
 
 #generate a word with a given length , per default is 5. is called at the start
@@ -34,8 +33,8 @@ def inputControl(guess):
         if(char not in ALLOWEDNUMBERS):
             return 0
            
-        elif(len(guess) != 5):
-            raise SystemExit(0)
+        elif(len(guess) != getMasterLength()):
+            return 0
     return 1    
     
 
@@ -51,11 +50,11 @@ def end():
 
 #check if guess is in the masterword
 def checkInput(char, i):
-        if(char not in master): #nicht drin
+        if(char not in str(getMaster())): #nicht drin
             return 0
-        elif(char == master[i]): #drin an der stelle
+        elif(char == str(getMaster())[i]): #drin an der stelle
             return 2
-        elif(char in master): #drin, aber nicht an der stelle
+        elif(char in str(getMaster())): #drin, aber nicht an der stelle
             return 1
      
   
